@@ -1,0 +1,28 @@
+STEP 1 
+------
+
+* Setup project and install basic dependencies
+* Setup Api and Reference url
+
+
+Step 2
+------
+
+* Write Api call funtion
+
+
+Step 3
+------
+
+* Write Regex funtion to validate the Input
+* Also write disable state to disable the button if the link is not validate
+* Sumbit Form Funtion - Loading state and getShortLink Must be there
+
+
+
+
+
+State - Input, disable, link , loading
+funtion - api call funtion , regex funtion, submit funtion, getShortLink Funtion
+
+

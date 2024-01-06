@@ -22,7 +22,18 @@ Step 3
 
 
 
-State - Input, disable, link , loading
-funtion - api call funtion , regex funtion, submit funtion, getShortLink Funtion
+* State - Input, disable, link , loading, copied
+* funtion - api call funtion , regex funtion, submit funtion, getShortLink Funtion
+
+
+* api call funtion - done 
+* handleInput - validate the regex funtion and input data - done
+
+
+
+
+
+
+
 
 

@@ -1,24 +1,30 @@
 import axios from 'axios'
-import React from 'react'
 
 export default async function getShortUrl(longLink, SetUrl) {
-  try {
-    const options = {
-        method: "GET",
-        url: 'https://ismaelc-bitly.p.rapidapi.com/v3/shorten',
-        params: {
-            longUrl: `${longLink}`,
-            apikey: '<REQUIRED>',
-            login: '<REQUIRED>'
-        },
-        headers: {
-            'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
-            'X-RapidAPI-Host': 'ismaelc-bitly.p.rapidapi.com'
-        }
-    }
 
-    const res = await axios.request(options)
-    SetUrl(res.data)
+  const apiKey = import.meta.env.VITE_APIKEY
+  const BASE_URL = import.meta.env.VITE_BASE_URL
+  console.log("hello")
+  try {
+
+    const res = await axios.post(
+      BASE_URL,
+      {
+        long_url: longLink
+      },
+      {
+        headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      }
+    }
+    )
+
+
+    // SetUrl(res.data)
+
+    const response = res.data
+    return response;
 
   } catch (error) {
     

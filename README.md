@@ -7,6 +7,7 @@ Link - https://shorty-lime.vercel.app/
 
 ## Screenshots
 
-(https://github.com/aromalnambiar/shorty/assets/119557899/3d9c2376-f660-41c5-b3d5-e39958131191)
-(https://github.com/aromalnambiar/shorty/assets/119557899/eb6998f8-cce3-4d53-bd8b-4a1bcfb0fc9e)
 
+![Screenshot 2024-01-07 at 16-57-12 Shorty](https://github.com/aromalnambiar/shorty/assets/119557899/e80fbb62-97df-48b0-b6f6-c9b22dfb606a)
+
+![Screenshot 2024-01-07 at 16-57-19 Shorty](https://github.com/aromalnambiar/shorty/assets/119557899/ace124b9-f875-4f08-ab9d-0c338d975ad7)

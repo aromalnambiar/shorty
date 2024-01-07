@@ -27,6 +27,14 @@ function App() {
   const [longUrl, setLongUrl] = useState("")
   const [shortUrl, setShortUrl] = useState("")
   const [{ background, fill }, set] = useSpring({ background: '#fff', fill: '#202020' }, [])
+  const [color, setColor] = useState("")
+
+
+  // get color
+  const handleColor = (color) => {
+    setColor(color)
+  }
+
 
   // handle input
   const handleLink = (e) => {
@@ -68,6 +76,8 @@ function App() {
     });
   }
 
+
+  console.log(color)
   
   
 
@@ -75,7 +85,7 @@ function App() {
     <>
       <a.main style={{ background }} className="bg-height" >
         <Canvas className="canvas" dpr={[1, 2]}>
-          <Object setBg={set} />
+          <Object handleColor={handleColor} setBg={set} />
           <OrbitControls enablePan={false} enableZoom={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
         </Canvas>
       
@@ -91,10 +101,10 @@ function App() {
       <div className="flex lg:mt-24  items-center justify-center   sm:px-6 lg:px-8 ">
         <div className="max-width-for-main w-full space-y-8">
           <div>
-            <h3 className=" text-left text-3xl font-extrabold text-gray-900 ">
+            <h3 className={`text-left text-3xl font-extrabold ${color === "night" ? "text-green-600" : ""}`}   > 
               Shorty: URL Generator with QR Code
             </h3>
-            <p className="mt-2 text-left text-1xl text-gray-400">
+            <p className={`mt-2 text-left text-1xl  ${color === "night" ? "text-white" : "text-gray-400"}`}  >
             Shorten your URLs effortlessly and enhance click impressions with the Shorty URL Generator. Scan the QR code for quick access to your concise links.
             </p>
           </div>

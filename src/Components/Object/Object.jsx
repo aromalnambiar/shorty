@@ -1,16 +1,17 @@
 import * as THREE from 'three'
 import React, { Suspense, useEffect, useState, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { PerspectiveCamera, Environment, MeshDistortMaterial, ContactShadows } from '@react-three/drei'
+import { PerspectiveCamera, Environment, MeshDistortMaterial, ContactShadows, Text } from '@react-three/drei'
 import { useSpring } from '@react-spring/core'
 import { a } from '@react-spring/three'
-
+import { FaRegSun } from "react-icons/fa6";
+import { GiBatMask } from "react-icons/gi";
 
 // React-spring animates native elements, in this case <mesh/> etc,
 // but it can also handle 3rd–party objs, just wrap them in "a".
 const AnimatedMaterial = a(MeshDistortMaterial)
 
-export default function Object({ setBg }) {
+export default function Object({ setBg , handleColor}) {
   const sphere = useRef()
   const light = useRef()
   const [mode, setMode] = useState(false)
@@ -55,6 +56,9 @@ export default function Object({ setBg }) {
     [mode, hovered, down]
   )
 
+  
+  
+
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 0, 4]} fov={75}>
@@ -73,9 +77,29 @@ export default function Object({ setBg }) {
             // Toggle mode between dark and bright
             setMode(!mode)
             setBg({ background: !mode ? '#202020' : '#f0f0f0', fill: !mode ? '#f0f0f0' : '#202020' })
+            // handle color
+
+            handleColor(!mode ? "night" : "day")
           }}>
           <sphereGeometry args={[1, 64, 64]} /> 
           <AnimatedMaterial color={color} envMapIntensity={env} clearcoat={coat} clearcoatRoughness={0} metalness={0.1} />
+          <Text
+              position={[0, 0, 1.2]} 
+              fontSize={0.2}  
+              color={!mode && !hovered  ? '#16a34a' : 'white'}  
+              anchorX="center" 
+              anchorY="middle"  
+            >
+              SHORTY
+            </Text>
+            <Text
+              position={[0, -0.15, 1.2]} 
+              fontSize={0.05}  
+              color={!mode && !hovered ? '#16a34a' : 'white'}  
+              anchorX="center" 
+              >
+                Toggle For {mode ? "Light Mode" : "Dark Mode"}
+            </Text>
         </a.mesh>
         <Environment preset="warehouse" />
         <ContactShadows

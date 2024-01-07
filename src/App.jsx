@@ -1,15 +1,23 @@
 import { useState } from 'react'
 import './App.css'
 import getShortUrl from './api/getShortUrl'
-
-// assets
-
-import Loader from './assets/loader.svg'
-import Tick from './assets/tick.svg'
-import Copy from './assets/copy.svg'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import QRCode from 'react-qr-code'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import { useSpring } from '@react-spring/core'
+import { a } from '@react-spring/web'
+import Object from './Components/Object/Object';
+
+// assets
+import Loader from './assets/loader.svg'
+import Tick from './assets/tick.svg'
+import Copy from './assets/copy.svg'
+
+
+
+
 
 function App() {
   // state
@@ -18,6 +26,7 @@ function App() {
   const [isCopied, setIsCopied] = useState(false)
   const [longUrl, setLongUrl] = useState("")
   const [shortUrl, setShortUrl] = useState("")
+  const [{ background, fill }, set] = useSpring({ background: '#fff', fill: '#202020' }, [])
 
   // handle input
   const handleLink = (e) => {
@@ -64,6 +73,12 @@ function App() {
 
   return (
     <>
+      <a.main style={{ background }} className="bg-height" >
+        <Canvas className="canvas" dpr={[1, 2]}>
+          <Object setBg={set} />
+          <OrbitControls enablePan={false} enableZoom={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
+        </Canvas>
+      
       <div>
       <div>
         {isCopied && (
@@ -73,10 +88,10 @@ function App() {
           </div>
         ) }
       </div>
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 ">
+      <div className="flex lg:mt-24  items-center justify-center   sm:px-6 lg:px-8 ">
         <div className="max-width-for-main w-full space-y-8">
           <div>
-            <h3 className="mt-6 text-left text-3xl font-extrabold text-gray-900">
+            <h3 className=" text-left text-3xl font-extrabold text-gray-900 ">
               Shorty: URL Generator with QR Code
             </h3>
             <p className="mt-2 text-left text-1xl text-gray-400">
@@ -131,7 +146,7 @@ function App() {
           </form>
           <div>
             {shortUrl !== '' ? (
-              <div className='py-3 sm:px-6 border border-gray-200 rounded-sm  space-x-2 sm:space-x-4 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-300 focus:outline-none transition-colors duration-200 hover:bg-green-50 hover:border-green-300'>
+              <div className='py-3 sm:px-6 border border-gray-200 rounded-sm  space-x-2 sm:space-x-4 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-300 focus:outline-none transition-colors duration-200 bg-green-50 hover:border-green-300'>
                 <button
                   type="button"
                   className="w-full bg-gray-50 text-gray-400 hover:text-gray-900 font-mono leading-6 flex items-center justify-center mb-2"
@@ -159,7 +174,7 @@ function App() {
                   
                 </button>
                 
-                <span className="text-gray-900">
+                <span className="text-gray-900 qrcontainer ">
                     <span
                       className="hidden sm:inline  text-gray-500 "
                       aria-hidden="true"
@@ -186,6 +201,7 @@ function App() {
         </div>
       </div>
     </div>
+    </a.main>
     </>
   )
 }

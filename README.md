@@ -1,8 +1,13 @@
-# React + Vite
+Shorty: URL Generator with QR Code
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Shorten your URLs effortlessly and enhance click impressions with the Shorty URL Generator. Scan the QR code for quick access to your concise link.
+Features
+
+    Effortless URL Shortening: Shorten long URLs in a snap.
+    QR Code Generation: Instantly generate QR codes for your shortened URLs.
+    Customizable Short URLs: Personalize your short URLs for better brand representation.
+    Click Tracking: Track the number of clicks on your shortened URLs.
+    Responsive Design: Access Shorty on any device for a seamless experience.

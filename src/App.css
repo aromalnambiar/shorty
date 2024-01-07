@@ -58,9 +58,10 @@ svg {
   }
   .canvas {
     flex: none;
-    margin-top: -50px;
+    margin-top: -30px;
+    height: 40vh !important;
     order: 0;
-    height: 100% !important;
+  
   }
  
 }
